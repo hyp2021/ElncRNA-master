@@ -2,6 +2,7 @@
 #validate elncRNA-gene interactions
 ###############################################################
 #ABC enhancer-gene link
+library(data.table)
 abc_dt <- fread("AllPredictions.AvgHiC.ABC0.015.minus150.ForABCPaperV3.txt.gz")
 keep_cols <- c(
   "chr", "start", "end", "name", "class", 
