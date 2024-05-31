@@ -45,7 +45,7 @@ data("human_pwms_v1")#in R package chromVARmotifs
 matches=matchMotifs(human_pwms_v1,rowRanges(se),genome = "BSgenome.Hsapiens.UCSC.hg19")
 ##Computes deviations in chromatin accessibility across sets of annotations
 dev <- computeDeviations(object = se, annotations = matches)
-saveRDS(dev, "E:\\单细胞\\pbs\\deviation.rds")
+saveRDS(dev, "deviation.rds")
 #compute variability
 metadata(dev)$Variability <- computeVariability(dev)
 plotVariability(metadata(dev)$Variability)
@@ -57,7 +57,7 @@ axis(side=1,at=250,labels=250, font.axis = 2)
 metadata(dev)$SummarizedExperiment <- se
 #add matches
 metadata(dev)$motifMatches <- matches
-saveRDS(dev, "E:\\单细胞\\pbs\\chromVAR-Summarized-Experiment.rds")
+saveRDS(dev, "chromVAR-Summarized-Experiment.rds")
 ##250 most variable TFs across all scATAC-seq clusters
 varTF_i <- sort(head(order(dev@metadata[["Variability"]][["variability"]], decreasing = TRUE), 250))
 varTF_score=deviationScores(dev)[varTF_i,]
